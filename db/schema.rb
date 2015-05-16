@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20150516135227) do
     t.datetime "updated_at",                           null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "mission_sessions", force: :cascade do |t|
     t.integer  "user_id",                  null: false
     t.integer  "mission_id",               null: false
@@ -34,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150516135227) do
     t.datetime "updated_at",               null: false
   end
 
->>>>>>> 6f98218899b65f2c846a0da43137be675309740e
   create_table "missions", force: :cascade do |t|
     t.string   "name",              null: false
     t.integer  "start_location_id", null: false

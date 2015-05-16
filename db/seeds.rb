@@ -20,7 +20,7 @@ location_bolzano = Location.create(
 
 # Missions
 Mission.create(
-  name: "Great Mission"
+  name: "Great Mission",
   start_location: location_laives,
   end_location: location_bolzano
 )
