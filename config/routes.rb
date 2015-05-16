@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, format: :json do
+    resource :user, only: :show
     resources :missions, only: :show do
       get :search, on: :collection
     end
-    resources :mission_sessions, only: :create
+    resource :mission_session, only: [:create, :destroy]
   end
 end

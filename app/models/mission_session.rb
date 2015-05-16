@@ -8,7 +8,7 @@ class MissionSession < ActiveRecord::Base
 
   before_validation :set_started_at, on: :create
 
-  enum status: [:started, :completed]
+  enum status: [:started, :completed, :aborted]
 
   private
 

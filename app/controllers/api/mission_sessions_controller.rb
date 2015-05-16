@@ -9,6 +9,19 @@ module Api
       end
     end
 
+    def destroy
+      if current_user.running_mission?
+        current_user.running_mission.update(
+          status: "aborted",
+          completed_at: Time.current
+        )
+
+        head :no_content
+      else
+        render json: { errors: ["You have no running mission"] }, status: :ok
+      end
+    end
+
     private
 
     def location
