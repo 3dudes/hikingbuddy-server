@@ -1,9 +1,12 @@
 class Mission < ActiveRecord::Base
   belongs_to :start_location, class_name: "Location", foreign_key: "start_location_id"
   belongs_to :end_location, class_name: "Location", foreign_key: "end_location_id"
+  has_many :route_positions
 
   validates :start_location, presence: true
   validates :end_location, presence: true
+
+  #after_create :create_route
 
   def self.by_serial(serial)
     Mission
@@ -20,8 +23,13 @@ class Mission < ActiveRecord::Base
     by_serial(serial).take!
   end
 
-  # after_create do
-  #   fetch_service = FetchRouteService.new(start_location.position, end_location.position)
-  #   fetch_service.fetch
-  # end
+
+  def create_route
+    route_positions.delete_all
+
+     service = FetchRouteService.new(start_location.position, end_location.position)
+     service.fetch_path.each_with_index do |position, index|
+       route_positions.create!(latitude: position[:coordinate][0], longitude: position[:coordinate][1], order: index)
+     end
+   end
 end

@@ -7,6 +7,6 @@ class Location < ActiveRecord::Base
   validates :longitude, presence: true
 
   def position
-    {latitude: latitude, longitude: longitude}
+    { latitude: latitude, longitude: longitude }
   end
 end

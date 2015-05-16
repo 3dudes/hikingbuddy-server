@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'geocoder'
 gem 'active_model_serializers'
 gem 'troupe'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

@@ -6,6 +6,11 @@ class FetchRouteService
     @start = start_position
   end
 
+  def fetch_path
+    fetch[:route][:path][:coordinates]
+
+  private
+
   def fetch
     uri = URI.parse("http://sdi.provinz.bz.it/routingservice/rest/routing/escursionista?lang=de")
     http = Net::HTTP.new(uri.host, uri.port)
@@ -16,16 +21,16 @@ class FetchRouteService
     data = {
       route: {
         start_point: {
-          coordinate: [1250612.0051522,5879279.857354]# [
-            #@start[:latitude],
-            #@start[:longitude]
-          #]
+          coordinate: [
+            @start[:latitude],
+            @start[:longitude]
+          ]
         },
         end_point: {
-          coordinate: [1282715.557032,5891051.1597099] # [
-            # @end[:latitude],
-            #@end[:longitude]
-        #  ]
+          coordinate: [
+             @end[:latitude],
+            @end[:longitude]
+          ]
         },
         int_point: {
           coordinate: []
@@ -34,8 +39,10 @@ class FetchRouteService
     }
 
     response = http.request(request, data.to_json)
-    puts response.body
+    json = JSON.parse(response.body)
+    json.deep_symbolize_keys
   end
+
 end
 =begin
 l1 = Location.first
