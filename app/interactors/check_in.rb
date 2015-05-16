@@ -24,7 +24,7 @@ class CheckIn
 
   def complete_mission
     if location.id == mission.end_location_id
-      
+      running_mission.update(status: "completed", completed_at: Time.current)
     else
       context.fail!(errors: ["You have to complete your last mission before you can start a new"])
     end
@@ -35,7 +35,7 @@ class CheckIn
   end
 
   def running_mission
-    user.mission_sessions.where(status: :started).take
+    @running_mission ||= user.mission_sessions.where(status: "started").take
   end
 
   def running_mission?

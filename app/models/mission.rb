@@ -20,8 +20,8 @@ class Mission < ActiveRecord::Base
     by_serial(serial).take!
   end
 
-  after_create do
-    fetch_service = FetchRouteService.new(start_location.position, end_location.position)
-    fetch_service.fetch
-  end
+  # after_create do
+  #   fetch_service = FetchRouteService.new(start_location.position, end_location.position)
+  #   fetch_service.fetch
+  # end
 end

@@ -4,7 +4,6 @@ class MissionSession < ActiveRecord::Base
 
   validates :user, presence: true
   validates :mission, presence: true
-  validates :status, presence: true
   validates :started_at, presence: true
 
   before_validation :set_started_at, on: :create
