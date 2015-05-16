@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150516135227) do
     t.integer  "mission_id",               null: false
     t.integer  "status",       default: 0, null: false
     t.datetime "started_at",               null: false
-    t.datetime "completed_at",             null: false
+    t.datetime "completed_at"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end

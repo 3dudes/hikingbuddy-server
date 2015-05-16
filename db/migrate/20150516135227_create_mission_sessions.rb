@@ -5,7 +5,7 @@ class CreateMissionSessions < ActiveRecord::Migration
       t.integer :mission_id, null: false
       t.integer :status, null: false, default: 0
       t.datetime :started_at, null: false
-      t.datetime :completed_at, null: false
+      t.datetime :completed_at
       t.timestamps null: false
     end
   end
