@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516132412) do
+ActiveRecord::Schema.define(version: 20150516135227) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20150516132412) do
     t.datetime "updated_at",                           null: false
   end
 
+<<<<<<< HEAD
+=======
+  create_table "mission_sessions", force: :cascade do |t|
+    t.integer  "user_id",                  null: false
+    t.integer  "mission_id",               null: false
+    t.integer  "status",       default: 0, null: false
+    t.datetime "started_at",               null: false
+    t.datetime "completed_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+>>>>>>> 6f98218899b65f2c846a0da43137be675309740e
   create_table "missions", force: :cascade do |t|
     t.string   "name",              null: false
     t.integer  "start_location_id", null: false
