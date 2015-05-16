@@ -24,12 +24,17 @@ class Mission < ActiveRecord::Base
   end
 
 
-  def create_route
+  def import_route(file_name)
     route_positions.delete_all
 
-     service = FetchRouteService.new(start_location.position, end_location.position)
-     service.fetch_path.each_with_index do |position, index|
-       route_positions.create!(latitude: position[:coordinate][0], longitude: position[:coordinate][1], order: index)
+     service = RouteImportService.new(file_name)
+     service.path.each_with_index do |position, index|
+       route_positions.create!(
+         latitude: position[:latitude],
+         longitude: position[:longitude],
+         altitude: position[:altitude],
+         order: index
+       )
      end
    end
 end

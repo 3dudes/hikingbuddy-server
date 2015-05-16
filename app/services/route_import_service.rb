@@ -9,8 +9,9 @@ class RouteImportService
 
     document.css("trkpt").map do |node|
       {
-        latitude: node.css("lat"),
-        longitude: node.css("lon")
+        latitude: node.attribute("lat").value.to_f,
+        longitude: node.attribute("lon").value.to_f,
+        altitude: node.at_css("ele").content.to_f
       }
     end
   end
