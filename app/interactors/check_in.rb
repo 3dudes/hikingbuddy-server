@@ -24,9 +24,14 @@ class CheckIn
 
   def complete_mission
     if location.id == mission.end_location_id
-      running_mission.update(status: "completed", completed_at: Time.current)
+      running_mission.update(
+        status: "completed",
+        completed_at: Time.current
+      )
+
+      context.session = running_mission.reload
     else
-      context.fail!(errors: ["You have to complete your last mission before you can start a new"])
+      context.fail!(errors: ["You have to complete your last mission before you can start a new one"])
     end
   end
 
