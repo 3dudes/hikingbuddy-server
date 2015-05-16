@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :missions, only: :show do
       get :search, on: :collection
       get :route, on: :member
+      get :height_profile, on: :member
     end
     resource :mission_session, only: [:create, :destroy]
   end

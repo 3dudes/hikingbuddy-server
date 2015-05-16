@@ -3,6 +3,7 @@ class CreateRoutePositions < ActiveRecord::Migration
     create_table :route_positions do |t|
       t.decimal :latitude, precision: 15, scale: 10, null: false
       t.decimal :longitude, precision: 15, scale: 10, null: false
+      t.decimal :altitude, precision: 15, scale: 10, null: false
       t.integer :mission_id, null: false
       t.integer :order, null: false
 

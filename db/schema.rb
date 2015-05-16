@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20150516200815) do
 
   create_table "locations", force: :cascade do |t|
-    t.string   "name"
-    t.string   "serial"
-    t.decimal  "latitude",   precision: 30, scale: 15
-    t.decimal  "longitude",  precision: 30, scale: 15
+    t.string   "name",                                 null: false
+    t.string   "serial",                               null: false
+    t.decimal  "latitude",   precision: 15, scale: 10, null: false
+    t.decimal  "longitude",  precision: 15, scale: 10, null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
   end
@@ -41,8 +41,9 @@ ActiveRecord::Schema.define(version: 20150516200815) do
   end
 
   create_table "route_positions", force: :cascade do |t|
-    t.decimal  "latitude",   precision: 30, scale: 15, null: false
-    t.decimal  "longitude",  precision: 30, scale: 15, null: false
+    t.decimal  "latitude",   precision: 15, scale: 10, null: false
+    t.decimal  "longitude",  precision: 15, scale: 10, null: false
+    t.decimal  "altitude",   precision: 15, scale: 10, null: false
     t.integer  "mission_id",                           null: false
     t.integer  "order",                                null: false
     t.datetime "created_at",                           null: false
