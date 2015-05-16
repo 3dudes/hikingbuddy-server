@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :missions
+    get '/missions/search', to: 'missions#search'
+    resources :missions, only: :show
   end
 end
