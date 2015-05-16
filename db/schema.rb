@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516132412) do
+ActiveRecord::Schema.define(version: 20150516135227) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,24 @@ ActiveRecord::Schema.define(version: 20150516132412) do
     t.decimal  "longitude",  precision: 15, scale: 10
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+  end
+
+  create_table "mission_sessions", force: :cascade do |t|
+    t.integer  "user_id",                  null: false
+    t.integer  "mission_id",               null: false
+    t.integer  "status",       default: 0, null: false
+    t.datetime "started_at",               null: false
+    t.datetime "completed_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.string   "name",              null: false
+    t.integer  "start_location_id", null: false
+    t.integer  "end_location_id",   null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "users", force: :cascade do |t|
