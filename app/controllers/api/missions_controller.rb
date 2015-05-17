@@ -17,11 +17,12 @@ module Api
 
     def height_profile
       mission = Mission.find(params[:id])
-      resolution = mission.route_positions.count / 100
-      altitudes = mission.route_positions.each_with_index.map do |position, counter|
-        position.altitude if counter % resolution == 0
-      end.compact
-      render json: altitudes, status: :ok, root: "height_profile"
+      render json: mission.height_profile, status: :ok, root: "height_profile"
+    end
+
+    def ranking
+      mission = Mission.where(id: params[:id], status: "completed" )
+      render json: mission.height_profile, status: :ok, root: "height_profile"
     end
   end
 end

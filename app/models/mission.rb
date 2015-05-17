@@ -23,6 +23,12 @@ class Mission < ActiveRecord::Base
     by_serial(serial).take!
   end
 
+  def height_profile
+    resolution = route_positions.count / 100
+    route_positions.each_with_index.map do |position, counter|
+      position.altitude if counter % resolution == 0
+    end.compact
+  end
 
   def import_route(file_name)
     route_positions.delete_all
