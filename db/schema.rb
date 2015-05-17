@@ -14,58 +14,58 @@
 ActiveRecord::Schema.define(version: 20150516232823) do
 
   create_table "auth_tokens", force: :cascade do |t|
-    t.integer  "user_id",         null: false
-    t.string   "token",           null: false
+    t.integer  "user_id",         limit: 4,   null: false
+    t.string   "token",           limit: 255, null: false
     t.date     "last_request_on"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string   "name",                                 null: false
-    t.string   "serial",                               null: false
-    t.decimal  "latitude",   precision: 15, scale: 10, null: false
-    t.decimal  "longitude",  precision: 15, scale: 10, null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.string   "name",       limit: 255,                           null: false
+    t.string   "serial",     limit: 255,                           null: false
+    t.decimal  "latitude",               precision: 15, scale: 10, null: false
+    t.decimal  "longitude",              precision: 15, scale: 10, null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   create_table "mission_sessions", force: :cascade do |t|
-    t.integer  "user_id",                  null: false
-    t.integer  "mission_id",               null: false
-    t.integer  "status",       default: 0, null: false
-    t.datetime "started_at",               null: false
+    t.integer  "user_id",      limit: 4,             null: false
+    t.integer  "mission_id",   limit: 4,             null: false
+    t.integer  "status",       limit: 4, default: 0, null: false
+    t.datetime "started_at",                         null: false
     t.datetime "completed_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "missions", force: :cascade do |t|
-    t.string   "name",              null: false
-    t.integer  "start_location_id", null: false
-    t.integer  "end_location_id",   null: false
-    t.integer  "distance",          null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "name",              limit: 255, null: false
+    t.integer  "start_location_id", limit: 4,   null: false
+    t.integer  "end_location_id",   limit: 4,   null: false
+    t.integer  "distance",          limit: 4,   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "route_positions", force: :cascade do |t|
-    t.decimal  "latitude",   precision: 15, scale: 10, null: false
-    t.decimal  "longitude",  precision: 15, scale: 10, null: false
-    t.decimal  "altitude",   precision: 15, scale: 10, null: false
-    t.integer  "mission_id",                           null: false
-    t.integer  "order",                                null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.decimal  "latitude",             precision: 15, scale: 10, null: false
+    t.decimal  "longitude",            precision: 15, scale: 10, null: false
+    t.decimal  "altitude",             precision: 15, scale: 10, null: false
+    t.integer  "mission_id", limit: 4,                           null: false
+    t.integer  "order",      limit: 4,                           null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",      null: false
-    t.string   "last_name",       null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "email"
-    t.string   "password_digest"
+    t.string   "first_name",      limit: 255, null: false
+    t.string   "last_name",       limit: 255, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
   end
 
 end
