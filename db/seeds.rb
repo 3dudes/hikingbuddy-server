@@ -21,7 +21,8 @@ location_rittner_horn = Location.create(
 mission_barbian = Mission.create(
   name: "Barbian to Rittner Horn",
   start_location: location_barbian,
-  end_location: location_rittner_horn
+  end_location: location_rittner_horn,
+  distance: 9590
 )
 mission_barbian.import_route("rittner_horn.gpx")
 
@@ -43,7 +44,8 @@ location_meraner_hütte = Location.create(
 mission_merano = Mission.create(
   name: "Merano to Meraner Hütte",
   start_location: location_merano,
-  end_location: location_meraner_hütte
+  end_location: location_meraner_hütte,
+  distance: 8490
 )
 mission_merano.import_route("boecker_huette.gpx")
 
@@ -65,6 +67,7 @@ location_radl_see_huette = Location.create(
 mission_bressanone = Mission.create(
   name: "Bressanone to Klausnerhütte",
   start_location: location_bressanone,
-  end_location: location_radl_see_huette
+  end_location: location_radl_see_huette,
+  distance: 15720
 )
 mission_bressanone.import_route("klausner_huette.gpx")

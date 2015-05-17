@@ -16,7 +16,3 @@ class RouteImportService
     end
   end
 end
-=begin
-service = RouteImportService.new("route.gpx")
-service.path
-=end
