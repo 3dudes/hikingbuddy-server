@@ -30,10 +30,13 @@ class Mission < ActiveRecord::Base
   end
 
   def average_time
-    times = mission_sessions.completed.map do |session|
-      session.score
-    end
-    times.inject(0.0) { |sum, el| sum + el } / times.size
+    times = mission_sessions.completed.map(&:score)
+    times.any? ? times.sum / times.size : 0
+  end
+
+  def session_count_total
+    completed_missions = mission_sessions.completed
+    completed_missions.distinct(:user_id).count
   end
 
   def import_route(file_name)

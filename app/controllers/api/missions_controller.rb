@@ -1,5 +1,11 @@
 module Api
   class MissionsController < Api::ApplicationController
+
+    def index
+      missions = Mission.all
+      render json: missions, each_serializer: MissionSerializer, status: :ok
+    end
+
     def show
       mission = Mission.find(params[:id])
       render json: mission, serializer: MissionSerializer, status: :ok
