@@ -31,5 +31,7 @@ module HikingbuddyServer
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_controller.asset_host = "http://black-comet-58-226236.euw1.nitrousbox.com:3000/"
   end
 end
