@@ -1,9 +1,9 @@
 module Api
-  class SessionsController
-    skip_before_filter :require_user, only: [:create, :destroy]
+  class SessionsController < Api::ApplicationController
+    skip_before_action :require_user
 
     def create
-      result = SignIn.call(params)
+      result = SignIn.call(login_params)
       if result.success?
         render json: result.auth_token, serializer: AuthTokenSerializer, status: :created
       else
@@ -18,7 +18,7 @@ module Api
 
     private
 
-    def params
+    def login_params
       params.require(:session).permit(:email, :password)
     end
   end

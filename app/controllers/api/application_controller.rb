@@ -7,7 +7,11 @@ module Api
     end
 
     def current_token
-      @current_token ||= AuthToken.find_by_token(params[:token])
+      @current_token ||= begin
+        token = AuthToken.find_by_token(params[:token])
+        token.update(last_request_on: Date.today) if token
+        token
+      end
     end
 
     private
