@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  mount_uploader :picture, PictureUploader
 
   has_many :mission_sessions, dependent: :destroy
   has_many :auth_tokens, dependent: :destroy

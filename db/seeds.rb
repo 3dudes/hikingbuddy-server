@@ -1,7 +1,25 @@
 # Users
-User.create(first_name: "Philip", last_name: "Giuliani", email: "philip@hiking.eu", password: "hiking")
-User.create(first_name: "Patrick", last_name: "Gruber", email: "patrick@hiking.eu", password: "hiking")
-User.create(first_name: "Victor", last_name: "ADASCALITEI", email: "victor@hiking.eu", password: "hiking")
+User.create(
+  first_name: "Philip",
+  last_name: "Giuliani",
+  email: "philip@hiking.eu",
+  password: "hiking",
+  picture: File.open(Rails.root.join("db/seeds-data/philip-picture.jpg"))
+)
+
+User.create(
+  first_name: "Patrick",
+  last_name: "Gruber",
+  email: "patrick@hiking.eu",
+  password: "hiking"
+)
+
+User.create(
+  first_name: "Victor",
+  last_name: "ADASCALITEI",
+  email: "victor@hiking.eu",
+  password: "hiking"
+)
 
 # Mission 1
 location_barbian = Location.create(

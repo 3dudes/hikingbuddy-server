@@ -38,6 +38,8 @@ gem 'active_model_serializers'
 gem 'troupe'
 gem 'nokogiri'
 gem 'has_secure_token'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
