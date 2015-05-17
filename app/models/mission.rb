@@ -2,11 +2,10 @@ class Mission < ActiveRecord::Base
   belongs_to :start_location, class_name: "Location", foreign_key: "start_location_id"
   belongs_to :end_location, class_name: "Location", foreign_key: "end_location_id"
   has_many :route_positions
+  has_many :mission_sessions
 
   validates :start_location, presence: true
   validates :end_location, presence: true
-
-  #after_create :create_route
 
   def self.by_serial(serial)
     Mission
@@ -28,6 +27,13 @@ class Mission < ActiveRecord::Base
     route_positions.each_with_index.map do |position, counter|
       position.altitude if counter % resolution == 0
     end.compact
+  end
+
+  def average_time
+    times = mission_sessions.completed.map do |session|
+      session.score
+    end
+    times.inject(0.0) { |sum, el| sum + el } / times.size
   end
 
   def import_route(file_name)
