@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150516200815) do
     t.string   "name",              null: false
     t.integer  "start_location_id", null: false
     t.integer  "end_location_id",   null: false
+    t.integer  "distance",          null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

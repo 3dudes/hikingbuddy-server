@@ -4,6 +4,7 @@ class CreateMissions < ActiveRecord::Migration
       t.string :name, null: false
       t.integer :start_location_id, null: false
       t.integer :end_location_id, null: false
+      t.integer :distance, null: false
 
       t.timestamps null: false
     end
