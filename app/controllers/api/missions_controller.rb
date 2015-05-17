@@ -29,8 +29,7 @@ module Api
     def ranking
       mission = Mission.find(params[:id])
       completed_missions =  mission.mission_sessions.completed
-      sorted = completed_missions.to_a.sort_by!(&:score)
-      render json: sorted, status: :ok, root: "ranking"
+      render json: completed_missions, each_serializer: MissionSessionSerializer, status: :ok, root: "ranking"
     end
   end
 end
