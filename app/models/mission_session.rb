@@ -11,7 +11,7 @@ class MissionSession < ActiveRecord::Base
   enum status: [:started, :completed, :aborted]
 
   def score
-    ((completed_at - started_at) * 24 * 60 * 60).to_i if completed_at
+    ((completed_at - started_at) * 24 * 60 / 1000).to_i if completed_at
   end
 
   private
