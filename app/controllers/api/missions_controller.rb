@@ -21,8 +21,10 @@ module Api
     end
 
     def ranking
-      mission = Mission.where(id: params[:id], status: "completed" )
-      render json: mission.height_profile, status: :ok, root: "height_profile"
+      mission = Mission.find(params[:id])
+      completed_missions =  mission.mission_sessions.completed
+      sorted = completed_missions.to_a.sort_by!(&:score)
+      render json: sorted, status: :ok, root: "ranking"
     end
   end
 end
