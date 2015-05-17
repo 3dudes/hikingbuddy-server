@@ -3,8 +3,8 @@ class UserSerializer < ActiveModel::Serializer
 
   def picture
     {
-      default: object.picture.default,
-      thumb: object.picture.thumb
+      default: object.picture.default.url,
+      thumb: object.picture.thumb.url
     }
   end
 end
