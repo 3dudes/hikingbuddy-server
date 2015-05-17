@@ -3,7 +3,11 @@ module Api
     before_action :require_user
 
     def current_user
-      @current_user ||= User.find_by_id(params[:user_id])
+      @current_user ||= current_token.user if current_token
+    end
+
+    def current_token
+      @current_token ||= AuthToken.find_by_token(params[:token])
     end
 
     private

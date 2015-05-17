@@ -39,6 +39,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -64,6 +65,8 @@ GEM
     geocoder (1.2.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    has_secure_token (1.0.0)
+      activerecord (>= 3.0)
     i18n (0.7.0)
     interactor (3.1.0)
     jbuilder (2.2.13)
@@ -170,10 +173,12 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  bcrypt (~> 3.1.7)
   byebug
   coffee-rails (~> 4.1.0)
   factory_girl_rails
   geocoder
+  has_secure_token
   jbuilder (~> 2.0)
   jquery-rails
   nokogiri
