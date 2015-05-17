@@ -1,3 +1,7 @@
+CarrierWave.configuration do |config|
+  config.assets_host = "http://black-comet-58-226236.euw1.nitrousbox.com:3000/"
+end
+
 module CarrierWave
   module Processing
     module MiniMagick
